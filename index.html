@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Công Cụ Kiểm Tra & Tạo Mật Khẩu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            text-align: center;
+            color: #fff;
+            font-size: 36px;
+            margin-bottom: 40px;
+        }
+
+        .container {
+            display: flex;
+            gap: 20px;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section {
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            width: 45%;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        .section h2 {
+            margin-top: 0;
+            color: #4A90E2;
+            font-size: 28px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .input-group input[type="text"],
+        .input-group input[type="password"],
+        .input-group input[type="number"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            outline: none;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .input-group input:focus {
+            border-color: #4A90E2;
+        }
+
+        button {
+            background-color: #4A90E2;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        button:hover {
+            background-color: #357ABD;
+            transform: scale(1.05);
+        }
+
+        .output {
+            margin-top: 15px;
+            font-weight: bold;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .output#strength-output {
+            color: #FF6347;
+        }
+
+        .output#suggestion-output {
+            color: #2ECC71;
+        }
+
+        #password-output {
+            margin-top: 15px;
+            font-size: 18px;
+            color: #2ECC71;
+        }
+
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            color: #fff;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>🔒 Công Cụ Kiểm Tra Độ  Mạnh Mật Khẩu 🔐</h1>
+    </div>
+    
+    <div class="container">
+        <!-- Phần Kiểm tra và đề xuất mật khẩu -->
+        <div class="section">
+            <h2>Kiểm tra và đề xuất mật khẩu</h2>
+            <div class="input-group">
+                <label for="user-password">Nhập mật khẩu bạn muốn kiểm tra:</label>
+                <input type="password" id="user-password" placeholder="Nhập mật khẩu của bạn">
+                <input type="checkbox" id="show-password"> Hiển thị mật khẩu
+            </div>
+            <button id="check-strength">Kiểm tra độ mạnh của mật khẩu</button>
+            <div class="output" id="strength-output"></div>
+            <div class="output" id="suggestion-output"></div>
+            <button id="copy-suggestion" style="display: none;">Sao chép mật khẩu</button>
+        </div>
+
+        <!-- Phần Tạo mật khẩu -->
+        <div class="section">
+            <h2>Tạo mật khẩu mới</h2>
+            <div class="input-group">
+                <label for="length">Độ dài mật khẩu:</label>
+                <input type="number" id="length" placeholder="Nhập độ dài mật khẩu (tối đa 1000)">
+            </div>
+            <div class="input-group">
+                <label>Tuỳ chọn:</label>
+                <input type="checkbox" id="include-uppercase"> Chữ hoa<br>
+                <input type="checkbox" id="include-numbers"> Chữ số<br>
+                <input type="checkbox" id="include-symbols"> Ký tự đặc biệt
+            </div>
+            <button id="generate">Tạo mật khẩu</button>
+            <div class="output" id="password-output"></div>
+            <button id="copy-generated" style="display: none;">Sao chép mật khẩu</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2024 Công Cụ Kiểm Tra Mật Khẩu - Nhatlee. Bảo lưu mọi quyền.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
